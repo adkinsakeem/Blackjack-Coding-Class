@@ -20,7 +20,7 @@ public static void main(String[] args){
 	int frameHeight = 590;
 	JFrame frame = new JFrame("BlackJack");
 	frame.setVisible(true);
-	frame.setDefaultCloseOperati	on(JFrame.EXIT_ON_CLOSE);
+	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	GridBagLayout gameLayout = new GridBagLayout();
 	GridBagConstraints gameConstraints = new GridBagConstraints();
 	frame.setSize(frameWidth, frameHeight);
@@ -129,6 +129,29 @@ gameConstraints.ipady = 10;
 gameConstraints.anchor = GridBagConstraints.LAST_LINE_END;
 gameConstraints.gridx = 4;
 //*** Block 7.5 End ******************************************
+
+
+//***Formatting***********************************************
+opponentText.setFont(new java.awt.Font("Arial", Font.BOLD, 16));
+opponentText.setHorizontalAlignment(JLabel.CENTER);
+opponentText.setOpaque(true);
+opponentText.setBackground(Color.RED);
+opponentText.setForeground(Color.BLUE);
+playerText.setFont(new java.awt.Font("Arial", Font.BOLD, 16));
+playerText.setHorizontalAlignment(JLabel.CENTER);
+playerText.setOpaque(true);
+playerText.setBackground(Color.RED);
+playerText.setForeground(Color.BLUE);
+//************************************************************
+
+play.addMouseListener(new MouseAdapter() {
+	@Override
+ public void mouseClicked(MouseEvent e) {
+ 	play.setVisible(false);
+ 	
+ }
+});
+
 
 	}
 }

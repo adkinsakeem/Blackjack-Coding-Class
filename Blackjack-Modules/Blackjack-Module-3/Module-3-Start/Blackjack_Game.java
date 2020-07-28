@@ -124,6 +124,8 @@ gameConstraints.anchor = GridBagConstraints.LAST_LINE_END;
 gameConstraints.gridx = 4;
 //*** Block 7.5 End ******************************************
 
+
+
 play.addMouseListener(new MouseAdapter() {
 	@Override
  public void mouseClicked(MouseEvent e) {
@@ -131,6 +133,7 @@ play.addMouseListener(new MouseAdapter() {
  	
  }
 });
+
 
 	}
 }
