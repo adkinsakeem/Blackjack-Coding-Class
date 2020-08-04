@@ -14,6 +14,10 @@ public class Blackjack_Game extends JPanel{
 	public static JLabel opponentText = new JLabel("This is the opponent's side");
 	public static final String[] Value = {"ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "jack", "queen", "king"};
 	public static final String[] Suit = {"hearts", "diamonds", "clubs", "spades"};
+	public static Blackjack_Player Player = new Blackjack_Player();
+	public static Blackjack_Opponent Opponent = new Blackjack_Opponent();
+	public static int playerCardCount = 0;
+	public static int opponentCardCount = 0;
 
 	public static void main(String[] args){
 
@@ -150,6 +154,17 @@ public class Blackjack_Game extends JPanel{
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				play.setVisible(false);
+				String dealTo = "player";
+
+				for(int num1=0; num1 < 4; num1++){
+					generateCard(dealTo);
+					if(dealTo.equals("player")){
+						dealTo = "opponent";
+					}else if(dealTo.equals("opponent")){
+						dealTo = "player";
+					}
+				}
+
 
 			}
 		});
@@ -157,7 +172,7 @@ public class Blackjack_Game extends JPanel{
 
 	}
 
-	public static void generateCard(){
+	public static void generateCard(String dealTo){
 		Random rand = new Random();
 		boolean duplicateCard = false;
 		int randCardNum;
@@ -171,7 +186,41 @@ public class Blackjack_Game extends JPanel{
 			newCard = "images\\png\\" + Value[randCardNum] + "_of_" + Suit[randSuit] + ".png";
 
 
+			for(Blackjack_Cards playerArray : Player.currentCards){
+				if(playerArray.cardFront == newCard){
+					duplicateCard = true;
+				}
+			}
+
+			for(Blackjack_Cards opponentArray : Opponent.currentCards){
+				if(opponentArray.cardFront == newCard){
+					duplicateCard = true;
+				}
+			}
+
+
+
+
+
 		}while (duplicateCard == true);
+
+		Blackjack_Cards Card = new Blackjack_Cards();
+		Card.cardFront = newCard;
+		Card.cardSuit = Suit[randSuit];
+		Card.card = Value[randCardNum];
+		Card.cardValue = (randCardNum + 1);
+
+
+		if(dealTo.equals("player")){
+			Player.currentCards.add(Card);
+			playerCardCount++;
+
+		}else if(dealTo.equals("opponent")){
+			Opponent.currentCards.add(Card);
+			opponentCardCount++;
+		}
+
+
 	}
 
 
