@@ -175,7 +175,6 @@ public class Blackjack_Game extends JPanel{
 					}
 				}
 
-
 			}
 		});
 

@@ -170,15 +170,6 @@ public class Blackjack_Game extends JPanel{
 				hitButton.setVisible(true);
 				String dealTo = "player";
 
-				hitButton.addMouseListener(new MouseAdapter() {
-					@Override
-					public void mouseClicked(MouseEvent e) {
-						generateCard("player");
-					}
-
-				});
-
-
 				for(int num1=0; num1 < 4; num1++){
 					generateCard(dealTo);
 					if(dealTo.equals("player")){
@@ -188,10 +179,16 @@ public class Blackjack_Game extends JPanel{
 					}
 				}
 
-
 			}
 		});
 
+		hitButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				generateCard("player");
+			}
+
+		});
 
 	}
 
@@ -265,8 +262,8 @@ public class Blackjack_Game extends JPanel{
 		opponentText.setText("Your opponent currently has " + Opponent.totalCardValue);
 		playerText.setText("You currently have " + Player.totalCardValue);
 
-			playersCards.repaint();
-   			playersCards.revalidate();
+		playersCards.repaint();
+		playersCards.revalidate();
 	}
 
 }
